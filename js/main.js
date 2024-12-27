@@ -25,16 +25,22 @@ const linksRef = ref(database, 'links');
 // Form and list
 const inputLink = document.querySelector('.header__field--link');
 const inputDescr = document.querySelector('.header__field--descr');
+const inputGrade = document.querySelector('.header__field--grade');
+const inputName = document.querySelector('.header__field--name');
 const contentList = document.querySelector('.list');
 const headerForm = document.querySelector('.header__form');
 
 // Add new link
 headerForm.addEventListener('submit', (e) => {
-  e.preventDefault();
   const link = inputLink.value;
   const descr = inputDescr.value;
-  push(linksRef, { link, descr });
-  headerForm.reset();
+  const grade = inputGrade.value;
+  const name = inputName.value;
+  if (link || descr) {
+    e.preventDefault();
+    push(linksRef, { link, descr, grade, name });
+    headerForm.reset();
+  }
 });
 
 // Displays links
@@ -46,10 +52,12 @@ onValue(linksRef, (snapshot) => {
       <li class="list__item">
         <article class="list__card card">
           <figure class="card__head">
+            <span class="card__head--star icon icon--star">${data.grade}</span>
             <img src="images/1.jpg" alt="Images" class="card__img">
           </figure>
           <div class="card__content">
             <p class='card__text'>${data.descr}</p>
+            <h2 class="card__name">${data.name}</h2>
           </div>
           <a href="${data.link}" class="card__link" target="_blank">Visit</a>
         </article>

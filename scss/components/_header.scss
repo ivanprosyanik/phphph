@@ -1,6 +1,7 @@
 .header {
   padding: size(20, 10) 0;
   margin-bottom: 5px;
+  background-color: gray;
 
   &__nav {
     display: flex;
@@ -12,14 +13,18 @@
     }
   }
 
-  background-color: gray;
+  &__form {
+    max-width: 500px;
+  }
 
   &__title {
     text-align: center;
   }
 
   &__labels {
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     margin-bottom: 5px;
   }

@@ -28,6 +28,12 @@
     mask-position: center;
     transition: background-color .3s;
   }
+
+  &--star {
+    &::before {
+      mask-image: url(../images/icon-star.svg);
+    }
+  }
 }
 
 body {
