@@ -1,0 +1,54 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include r($phone) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__item {
+    border: 1px solid #000;
+    overflow: hidden;
+
+    &:hover .card__img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+
+  &__head {
+    display: flex;
+    flex: 1 0 auto;
+    height: 100%;
+  }
+
+  &__content {
+    padding: 5px 10px;
+    flex: 1 0 auto;
+    height: 100%;
+
+    @include r($phone) {
+      padding: 5px;
+    }
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  &__img {
+    transition: transform .3s ease-in-out;
+    margin-bottom: size(10, 5);
+  }
+}
